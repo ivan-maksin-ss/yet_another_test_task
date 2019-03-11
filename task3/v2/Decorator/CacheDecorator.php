@@ -52,15 +52,14 @@ class CacheDecorator extends DataProviderDecorator
      * Gets unique cache key.
      *
      * @param array $input
-     * @return false|string
+     * @return string
      */
     protected function getCacheKey(array $input)
     {
-        if ($key = \json_encode($input)) {
-            return md5($key);
-        }
+        $key = '';
+        // Здесь какая-то хитрая логика получения ключа...
 
-        return false;
+        return md5($key);
     }
 
     /**
