@@ -1,5 +1,14 @@
-<?php 
+<?php
 
+/**
+ * Складывает целые числа заданные в десятичной записи.
+ *
+ * @param string $a
+ * @param string $b
+ * @return string
+ *
+ * @throws Exception
+ */
 function longAdd(string $a, string $b) {
 	// check if numbers are from digits with optional sign
 	if (preg_match('/^\d+$/', $a) !==1 || preg_match('/^\d+$/', $b) !== 1) 
@@ -8,7 +17,7 @@ function longAdd(string $a, string $b) {
 	}
 	
 	// Максимальный размер количества цифр в группе
-	$chunkSize = 2;//strlen(strval(PHP_INT_MAX))-1;
+	$chunkSize = strlen(strval(PHP_INT_MAX))-1;
 	
 	// Удаление ведущих нулей
 	$a = ltrim($a, '0');
@@ -60,6 +69,12 @@ function longAdd(string $a, string $b) {
 }
 
 
+/**
+ * Генерирует целое число указанной длины в десятичной записи.
+ *
+ * @param $len
+ * @return string
+ */
 function randomDecimal($len)
 {
 	$result = '';
@@ -74,11 +89,14 @@ function randomDecimal($len)
 
 // Testing
 $testsCount = 1e2;
+
 while ($testsCount--) {
 	$a = randomDecimal(rand(5, 10));
 	$b = randomDecimal(rand(5, 10));
+
 	$result = longAdd($a, $b);
 	$etalon = bcadd($a, $b);
+
 	if ($result !== $etalon) {
 		echo "- \n: $a;\n: $b;\n: $result;\n: $etalon\n";
 	} else {
