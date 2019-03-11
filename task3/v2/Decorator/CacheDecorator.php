@@ -6,6 +6,7 @@ use DateTime;
 use Exception;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
+use src\ConfigInterface;
 
 class CacheDecorator extends DataProviderDecorator
 {
@@ -14,6 +15,9 @@ class CacheDecorator extends DataProviderDecorator
 
     /** @var LoggerInterface*/
     protected $logger;
+
+    /** @var ConfigInterface*/
+    protected $config;
 
     /**
      * {@inheritdoc}
@@ -30,16 +34,15 @@ class CacheDecorator extends DataProviderDecorator
             $result = $this->dataProvider->get($input);
 
             if ($this->isCacheable($result)) {
+                $expires = (new DateTime())->modify('+' . $this->config->get('cache_days', 1) . ' day');
                 $cacheItem
                     ->set($result)
-                    ->expiresAt(
-                        (new DateTime())->modify('+1 day')
-                    );
+                    ->expiresAt($expires);
             }
 
             return $result;
         } catch (Exception $e) {
-            $this->logger->critical('Error');
+            $this->logger->critical('Error: ' . $e->getMessage());
         }
 
         return [];
@@ -102,5 +105,21 @@ class CacheDecorator extends DataProviderDecorator
     public function getCache()
     {
         return $this->cache;
+    }
+
+    /**
+     * @return ConfigInterface
+     */
+    public function getConfig(): ConfigInterface
+    {
+        return $this->config;
+    }
+
+    /**
+     * @param ConfigInterface $config
+     */
+    public function setConfig(ConfigInterface $config): void
+    {
+        $this->config = $config;
     }
 }

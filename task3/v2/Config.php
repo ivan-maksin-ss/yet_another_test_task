@@ -10,5 +10,5 @@ interface ConfigInterface
      * @param $key
      * @return mixed
      */
-    public function get($key);
+    public function get($key, $default = null);
 }
