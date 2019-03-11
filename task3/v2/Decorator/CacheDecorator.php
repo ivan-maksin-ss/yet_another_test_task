@@ -8,6 +8,11 @@ use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
 use src\ConfigInterface;
 
+/**
+ * Class CacheDecorator
+ *
+ * Adds caching functionality to a data provider
+ */
 class CacheDecorator extends DataProviderDecorator
 {
     /** @var CacheItemPoolInterface  */

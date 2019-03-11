@@ -4,6 +4,11 @@ namespace src\Integration;
 
 use src\ConfigInterface;
 
+/**
+ * Class HttpDataProvider
+ *
+ * Getting data using HTTP
+ */
 class HttpDataProvider implements DataProviderInterface
 {
     protected $host;

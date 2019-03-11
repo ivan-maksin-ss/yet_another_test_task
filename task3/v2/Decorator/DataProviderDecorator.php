@@ -4,6 +4,11 @@ namespace src\Decorator;
 
 use src\Integration\DataProviderInterface;
 
+/**
+ * Class DataProviderDecorator
+ *
+ * Base decorator  which makes nothing but getting data
+ */
 class DataProviderDecorator implements DataProviderInterface
 {
     /** @var DataProviderInterface */
