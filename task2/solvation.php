@@ -26,7 +26,7 @@ if (preg_match('/^\d+$/', $data) !== 1) {
 
 $count = bcadd($data, 1);
 
-if (file_put_contents($filename, $count) === FALSE) {
+if (file_put_contents($filename, $count, LOCK_EX) === FALSE) {
 	throw new \Exception('There was error while saving counter value.');
 }
 
