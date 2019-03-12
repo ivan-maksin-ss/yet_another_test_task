@@ -64,7 +64,7 @@ VALUES
   (null, 9, 5);
 
 -- Query
-
+-- Variant 1
 SELECT
   `book`.*, count(*) AS authors_count
 FROM
@@ -74,3 +74,18 @@ GROUP BY
   `book`.`id`
 HAVING 
   authors_count >= 3;
+
+-- Variant 2 (subquery)
+SELECT
+	`book`.`title`,
+    (SELECT
+     	COUNT(author_id)
+     FROM
+     	book_author
+     WHERE
+     	book_id = book.id
+    ) AS authors_count
+FROM
+  `book`
+HAVING
+	authors_count >= 3;

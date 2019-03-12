@@ -16,4 +16,6 @@
 у "автора" может быть несколько "книг". Эту зависимость "многие-ко-многим" 
 в реляционной СУБД можно реализовать с помощью дополнительной таблицы связи "book_author".
 
-Скрипт создания таблиц, наполнения их данными и требуемая выборка находится по [ссылке](https://www.db-fiddle.com/f/5azp2FRNGs2h3FUQrRoNHL/2)
+Скрипт создания таблиц, наполнения их данными и требуемая выборка находится по ссылке 
+* 1 вариант [https://www.db-fiddle.com/f/5azp2FRNGs2h3FUQrRoNHL/6/](https://www.db-fiddle.com/f/5azp2FRNGs2h3FUQrRoNHL/6)
+* 2 вариант [https://www.db-fiddle.com/f/5azp2FRNGs2h3FUQrRoNHL/5/](https://www.db-fiddle.com/f/5azp2FRNGs2h3FUQrRoNHL/5)
