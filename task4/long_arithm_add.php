@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Складывает целые числа заданные в десятичной записи.
+ * Складывает целые положительные числа заданные в десятичной записи.
  *
- * @param string $a
- * @param string $b
- * @return string
+ * @param string $a Слагаемое
+ * @param string $b Слагаемое
+ * @return string Сумма
  *
  * @throws Exception
  */
 function longAdd(string $a, string $b) {
-	// check if numbers are from digits with optional sign
+	// check if numbers are from digits
 	if (preg_match('/^\d+$/', $a) !==1 || preg_match('/^\d+$/', $b) !== 1) 
 	{
 		throw new \Exception("At least one number is not a valid integer value.");
