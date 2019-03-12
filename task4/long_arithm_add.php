@@ -91,8 +91,8 @@ function randomDecimal($len)
 $testsCount = 1e2;
 
 while ($testsCount--) {
-	$a = randomDecimal(rand(5, 10));
-	$b = randomDecimal(rand(5, 10));
+	$a = randomDecimal(rand(50, 100));
+	$b = randomDecimal(rand(50, 100));
 
 	$result = longAdd($a, $b);
 	$etalon = bcadd($a, $b);
